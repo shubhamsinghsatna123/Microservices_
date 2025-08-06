@@ -40,7 +40,7 @@ public class AppSecurity {
 	@Bean
 	AuthenticationProvider authenticationProvider() {
 		DaoAuthenticationProvider authenticationProvider=new DaoAuthenticationProvider(service);
-		authenticationProvider.setPasswordEncoder(new BCryptPasswordEncoder());
+		authenticationProvider.setPasswordEncoder(new BCryptPasswordEncoder(12));
 		return authenticationProvider;
 	}
 	
