@@ -14,13 +14,18 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @Component
 public class JwtAuthFilter extends OncePerRequestFilter {
+	
+	@Override
+    protected boolean shouldNotFilter(HttpServletRequest request) {
+        String path = request.getRequestURI();
+        return path.startsWith("/actuator");
+    }
 
-//    private final String secretKey = "oGuGX1WkJzNmYQoPBEDMLJQ5VV8z04qDLUgznZ2tFqk"; 
-//    SecretKey key = Keys.hmacShaKeyFor(secretKey.getBytes());
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
+    	
 
         String authHeader = request.getHeader("Authorization");
 
