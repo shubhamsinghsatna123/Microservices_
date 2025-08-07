@@ -18,6 +18,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 	@Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
         String path = request.getRequestURI();
+//        String path = request.getRequestURI();
+        
         return path.startsWith("/actuator");
     }
 
